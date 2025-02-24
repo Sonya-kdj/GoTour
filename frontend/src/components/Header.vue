@@ -5,22 +5,22 @@
 			<nav class="menu">
 				<ul class="menu__items">
 					<li class="menu__item">
-						<a href="#">Главная страница</a>
+						<a class="link" href="#">Главная страница</a>
 					</li>
 					<li class="menu__item">
-						<a href="#">О нас</a>
+						<a class="link" href="#">О нас</a>
 					</li>
 					<li class="menu__item">
-						<a href="#">Расписание</a>
+						<a class="link" href="#">Расписание</a>
 					</li>
 					<li class="menu__item">
-						<a href="#">Забронировать</a>
+						<a class="link" href="#">Забронировать</a>
 					</li>
 					<li class="menu__item">
-						<a href="#">Контакты</a>
+						<a class="link" href="#">Контакты</a>
 					</li>
 					<li class="menu__item">
-						<a href="#">Отзывы</a>
+						<a class="link" href="#">Отзывы</a>
 					</li>
 				</ul>
 			</nav>
@@ -46,5 +46,9 @@
 	gap: 21px;
 	padding: 0;
 	list-style: none;
+}
+
+.link:hover {
+	color: #1a5276;
 }
 </style>

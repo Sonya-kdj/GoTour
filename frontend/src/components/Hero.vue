@@ -50,4 +50,9 @@
 	background: #f4d03f;
 	padding: 12px 24px;
 }
+
+.btn__hero:hover {
+	background: #1a5276;
+	color: #fff;
+}
 </style>

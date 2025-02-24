@@ -3,14 +3,17 @@
 		<Header />
 		<Hero />
 		<AboutUs />
+		<Schedule />
+		<Form />
 	</div>
 </template>
 
 <script setup>
 import AboutUs from './components/AboutUs.vue'
 import Header from './components/Header.vue'
-
 import Hero from './components/Hero.vue'
+import Schedule from './components/Schedule.vue'
+import Form from './components/Form.vue'
 </script>
 
 <style>

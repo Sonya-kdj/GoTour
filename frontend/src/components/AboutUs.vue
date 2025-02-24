@@ -20,14 +20,16 @@
 					src="../assets/3.png"
 					alt="Парапланеризм"
 				/>
+
 				<h2 class="gallery__title">GO TOUR</h2>
+
 				<img
-					class="gallery__item small"
+					class="gallery__item small mountain-lake"
 					src="../assets/5.png"
 					alt="Горное озеро"
 				/>
 				<img
-					class="gallery__item small"
+					class="gallery__item small campfire"
 					src="../assets/6.jpg"
 					alt="Люди у костра"
 				/>
@@ -37,20 +39,17 @@
 	</section>
 </template>
 
-<script setup></script>
-
 <style scoped>
 .about-us {
 	margin-top: 64px;
 }
+
 .title {
 	font-size: 42px;
 	font-style: normal;
 	font-weight: 700;
-	text-align: left;
-	width: 714px;
+	width: 700px;
 }
-
 .sub-title {
 	font-size: 21px;
 	font-style: normal;
@@ -61,36 +60,54 @@
 	margin-left: auto; /* Двигает блок вправо */
 }
 .gallery {
-	padding: 40px;
-}
-
-.gallery__title {
-	font-size: 32px;
-	font-weight: 700;
-	color: #1a1a1a;
-	margin-top: 20px;
+	margin-top: 48px;
 }
 
 .gallery__grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-auto-rows: 200px;
 	gap: 20px;
+	margin: 0 auto;
+	align-items: start;
+	justify-items: center;
+	grid-template-areas:
+		'img1 img2 img3'
+		'title img5 img6'
+		'img4 img5 img6';
+}
+
+.gallery__title {
+	grid-area: title;
+	font-size: 42px;
+	font-weight: 700;
+	justify-self: left;
+	align-self: center;
+	margin: 0;
 }
 
 .gallery__item {
 	width: 100%;
-	height: 100%;
 	border-radius: 12px;
 	object-fit: cover;
 }
 
-/* Карточки разного размера */
-.tall {
-	grid-row: span 2;
+/* Распределение картинок по сетке */
+.gallery__item:nth-child(1) {
+	grid-area: img1;
 }
-
-.small {
-	grid-row: span 1;
+.gallery__item:nth-child(2) {
+	grid-area: img2;
+}
+.gallery__item:nth-child(3) {
+	grid-area: img3;
+}
+.gallery__item:nth-child(4) {
+	grid-area: img4;
+}
+.gallery__item:nth-child(5) {
+	grid-area: img5;
+}
+.gallery__item:nth-child(6) {
+	grid-area: img6;
 }
 </style>

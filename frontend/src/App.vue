@@ -5,6 +5,7 @@
 		<AboutUs />
 		<Schedule />
 		<Form />
+		<Reviews />
 	</div>
 </template>
 
@@ -14,6 +15,7 @@ import Header from './components/Header.vue'
 import Hero from './components/Hero.vue'
 import Schedule from './components/Schedule.vue'
 import Form from './components/Form.vue'
+import Reviews from './components/Reviews.vue'
 </script>
 
 <style>

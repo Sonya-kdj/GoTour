@@ -15,6 +15,9 @@ export class Tour {
 	price!: number
 
 	@Column()
+	people!: string
+
+	@Column()
 	startData!: Date
 
 	@Column()

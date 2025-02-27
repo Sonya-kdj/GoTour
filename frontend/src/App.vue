@@ -6,6 +6,7 @@
 		<Schedule />
 		<Form />
 		<Reviews />
+		<Footer />
 	</div>
 </template>
 
@@ -16,6 +17,7 @@ import Hero from './components/Hero.vue'
 import Schedule from './components/Schedule.vue'
 import Form from './components/Form.vue'
 import Reviews from './components/Reviews.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <style>

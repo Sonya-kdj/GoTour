@@ -32,25 +32,22 @@
 <script setup></script>
 
 <style scoped>
-/* Секция с фоном */
 .section--yellow {
-	background-color: #f5d44f; /* Жёлтый фон */
-	width: 100vw; /* Ширина на всю страницу */
+	background-color: #f5d44f;
+	width: 100vw;
 	position: relative;
-	left: calc(-50vw + 50%); /* Центрирует фон */
+	left: calc(-50vw + 50%);
 	padding: 40px 0;
 	margin-top: 64px;
 	margin-bottom: 64px;
 }
 
-/* Контейнер формы */
 .forms {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 20px;
 }
 
-/* Заголовок */
 .title {
 	font-size: 42px;
 	font-style: normal;
@@ -58,7 +55,6 @@
 	margin-bottom: 40px;
 }
 
-/* Контейнер формы */
 .form {
 	padding: 20px;
 	margin-top: 64px;
@@ -71,7 +67,6 @@
 	margin: 20px auto;
 }
 
-/* Общие стили для полей ввода */
 .form__input {
 	width: 100%;
 	padding: 12px;
@@ -84,18 +79,15 @@
 	background: #fff;
 }
 
-/* Группа полей в строке */
 .form__row {
 	display: flex;
 	gap: 10px;
 }
 
-/* Маленькие поля ввода (имя и email) */
 .form__input--small {
 	flex: 1;
 }
 
-/* Кнопка отправки */
 .form__button {
 	padding: 14px;
 	background: #2c384a;

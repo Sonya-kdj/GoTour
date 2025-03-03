@@ -13,11 +13,11 @@ export class TourController {
 	}
 
 	private formatTourDates(startDate: Date, endDate: Date): string {
-		const formattedStart = format(startDate, 'dd', { locale: ru })
-		const formattedEnd = format(endDate, 'dd', { locale: ru })
+		const formattedStart = format(startDate, 'd', { locale: ru }) // 'd' для дня без нуля
+		const formattedEnd = format(endDate, 'd', { locale: ru }) // 'd' для дня без нуля
 		const month = format(startDate, 'LLLL', { locale: ru }).toUpperCase()
 
-		return `${formattedStart}-${formattedEnd} ${month}`
+		return `${formattedStart} - ${formattedEnd} ${month}`
 	}
 
 	// Получить все туры

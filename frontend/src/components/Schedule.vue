@@ -17,7 +17,7 @@
 
 					<div class="tour__info">
 						<p class="tour__label">Когда едем:</p>
-						<p class="tour__value">{{ tour.formatTourDates }}</p>
+						<p class="tour__value">{{ tour.formattedDate }}</p>
 					</div>
 
 					<div class="tour__info">
@@ -27,8 +27,8 @@
 
 					<button class="tour__button">ЗАБРОНИРОВАТЬ</button>
 				</div>
-				<div class="tour__img">
-					<img :src="require(`@/assets/${tour.images[0]}`)" :alt="tour.name" />
+				<div v-for="(images, index) in tour.images" :key="index">
+					<img :src="`src/assets/${images}`" :alt="tour.name" />
 				</div>
 			</div>
 		</div>

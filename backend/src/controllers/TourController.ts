@@ -2,6 +2,8 @@ import { Request, Response } from 'express'
 import { AppDataSource } from '../data-source'
 import { Tour } from '../entity/Tour'
 import { Repository } from 'typeorm'
+import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
 
 export class TourController {
 	private tourRepository: Repository<Tour>
@@ -10,11 +12,23 @@ export class TourController {
 		this.tourRepository = AppDataSource.getRepository(Tour)
 	}
 
+	private formatTourDates(startDate: Date, endDate: Date): string {
+		const formattedStart = format(startDate, 'dd', { locale: ru })
+		const formattedEnd = format(endDate, 'dd', { locale: ru })
+		const month = format(startDate, 'LLLL', { locale: ru }).toUpperCase()
+
+		return `${formattedStart}-${formattedEnd} ${month}`
+	}
+
 	// Получить все туры
 	async getAllTours(req: Request, res: Response) {
 		try {
 			const tours = await this.tourRepository.find()
-			return res.json(tours)
+			const formattedTours = tours.map(tour => ({
+				...tour,
+				formattedDate: this.formatTourDates(tour.startData, tour.endData),
+			}))
+			return res.json(formattedTours)
 		} catch (error) {
 			return res.status(500).json({ message: 'Ошибка при получении туров' })
 		}
@@ -29,7 +43,11 @@ export class TourController {
 			if (!tour) {
 				return res.status(404).json({ message: 'Тур не найден' })
 			}
-			return res.json(tour)
+
+			return res.json({
+				...tour,
+				formattedDate: this.formatTourDates(tour.startData, tour.endData),
+			})
 		} catch (error) {
 			return res.status(500).json({ message: 'Ошибка при получении тура' })
 		}

@@ -4,38 +4,55 @@
 			<h2 class="title">РАСПИСАНИЕ ТУРОВ</h2>
 			<p class="sub-title">Выберите, когда хотите поехать:</p>
 		</div>
-		<div class="tours__inner">
-			<div class="tour__txt">
-				<h2 class="tour__title">КИТАЙ</h2>
-				<p class="tour__description">
-					Запретный город, Великая стена и парящие горы из "Аватара".
-					Путешествие по древнему и футуристическому Китаю!
-				</p>
+		<div v-if="tours.length > 0">
+			<div v-for="tour in tours" :key="tour.id" class="tours__inner">
+				<div class="tour__txt">
+					<h2 class="tour__title">{{ tour.name }}</h2>
+					<p class="tour__description">{{ tour.description }}</p>
 
-				<div class="tour__info">
-					<p class="tour__label">Количество человек в группе:</p>
-					<div class="tour__value date">10-12</div>
+					<div class="tour__info">
+						<p class="tour__label">Количество человек в группе:</p>
+						<div class="tour__value date">{{ tour.people }}</div>
+					</div>
+
+					<div class="tour__info">
+						<p class="tour__label">Когда едем:</p>
+						<p class="tour__value">{{ tour.formatTourDates }}</p>
+					</div>
+
+					<div class="tour__info">
+						<p class="tour__label">Цена:</p>
+						<p class="tour__value tour__value--large">{{ tour.price }} ₽</p>
+					</div>
+
+					<button class="tour__button">ЗАБРОНИРОВАТЬ</button>
 				</div>
-
-				<div class="tour__info">
-					<p class="tour__label">Когда едем:</p>
-					<p class="tour__value">1-8 АПРЕЛЯ</p>
+				<div class="tour__img">
+					<img :src="require(`@/assets/${tour.images[0]}`)" :alt="tour.name" />
 				</div>
-
-				<div class="tour__info">
-					<p class="tour__label">Цена:</p>
-					<p class="tour__value tour__value--large">172 000 ₽</p>
-				</div>
-
-				<button class="tour__button">ЗАБРОНИРОВАТЬ</button>
 			</div>
-			<div class="tour__img"><img src="../assets/tour1.jpg" alt="" /></div>
 		</div>
 	</section>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue'
 
+const tours = ref([])
+
+const fetchTours = async () => {
+	try {
+		const response = await fetch('http://localhost:3000/api/tours')
+		if (!response.ok) throw new Error('Ошибка загрузки туров')
+		tours.value = await response.json()
+		console.log(tours)
+	} catch (error) {
+		console.error(error)
+	}
+}
+
+onMounted(fetchTours)
+</script>
 <style scoped>
 .Schedule {
 	margin-top: 64px;

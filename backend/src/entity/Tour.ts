@@ -26,6 +26,6 @@ export class Tour {
 	@Column()
 	location: String
 
-	@Column('json', { nullable: true })
-	images: string[]
+	@Column('simple-array', { nullable: true })
+	images: string[] // Массив строк, где каждая строка — это путь к изображению
 }

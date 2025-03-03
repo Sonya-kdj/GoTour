@@ -25,8 +25,6 @@ router.post(
 
 export default router
 
-
-
 //GET /api/tours — получить список туров
 //	•	GET /api/tours/:id — получить один тур
 //	•	POST /api/tours — создать тур

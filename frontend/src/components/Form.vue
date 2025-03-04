@@ -3,24 +3,42 @@
 		<div class="forms">
 			<h2 class="title">ГОТОВ К ПОЕЗДКЕ ?</h2>
 			<div class="form">
-				<form action="#">
-					<input type="text" class="form__input" placeholder="выберите тур" />
+				<form @submit.prevent="sendBooking">
+					<select v-model="form.tour" class="form__input">
+						<option value="" disabled>Выберите тур</option>
+						<option v-for="tour in tours" :key="tour.id" :value="tour.name">
+							{{ tour.name }}
+						</option>
+					</select>
 
 					<div class="form__row">
 						<input
+							v-model="form.name"
 							type="text"
 							class="form__input form__input--small"
 							placeholder="ваше имя"
 						/>
 						<input
+							v-model="form.email"
 							type="email"
 							class="form__input form__input--small"
 							placeholder="email"
 						/>
 					</div>
 
-					<input type="tel" class="form__input" placeholder="номер телефона" />
-					<input type="text" class="form__input" placeholder="telegram" />
+					<input
+						v-model="form.phone"
+						type="tel"
+						class="form__input"
+						placeholder="номер телефона"
+						@input="validatePhone"
+					/>
+					<input
+						v-model="form.telegram"
+						type="text"
+						class="form__input"
+						placeholder="telegram"
+					/>
 
 					<button type="submit" class="form__button">оставить заявку</button>
 				</form>
@@ -29,7 +47,54 @@
 	</section>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const form = ref({
+	tour: '',
+	name: '',
+	email: '',
+	phone: '',
+	telegram: '',
+})
+
+const tours = ref([])
+
+const fetchTours = async () => {
+	try {
+		const response = await fetch('http://localhost:3000/api/tours')
+		const data = await response.json()
+		tours.value = data
+	} catch (error) {
+		console.error('Ошибка загрузки туров:', error)
+	}
+}
+
+const validatePhone = () => {
+	form.value.phone = form.value.phone.replace(/\D/g, '')
+}
+
+const sendBooking = async () => {
+	try {
+		const response = await fetch('http://localhost:3000/api/bookings ', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(form.value),
+		})
+
+		if (!response.ok) {
+			throw new Error('Ошибка при отправке заявки')
+		}
+
+		alert('Заявка успешно отправлена!')
+		form.value = { tour: '', name: '', email: '', phone: '', telegram: '' }
+	} catch (error) {
+		alert('Ошибка: ' + error.message)
+	}
+}
+
+onMounted(fetchTours)
+</script>
 
 <style scoped>
 .section--yellow {
@@ -103,6 +168,6 @@
 }
 
 .form__button:hover {
-	background: #1e2a3b;
+	background: #1a5276;
 }
 </style>

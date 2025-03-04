@@ -4,7 +4,7 @@
 			<h2 class="title">РАСПИСАНИЕ ТУРОВ</h2>
 			<p class="sub-title">Выберите, когда хотите поехать:</p>
 		</div>
-		<div v-if="tours.length > 0">
+		<div class="tour__inner" v-if="tours.length > 0">
 			<div v-for="tour in tours" :key="tour.id" class="tours__inner">
 				<div class="tour__txt">
 					<h2 class="tour__title">{{ tour.name }}</h2>
@@ -79,7 +79,7 @@ onMounted(fetchTours)
 	display: flex;
 	justify-content: space-between;
 	margin-top: 64px;
-	margin-bottom: 48px;
+	margin-bottom: 64px;
 }
 .tour__txt {
 	width: 537px;

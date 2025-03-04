@@ -50,7 +50,6 @@
 	left: calc(-50vw + 50%);
 	padding: 80px 0;
 	margin-top: 64px;
-	margin-bottom: 64px;
 }
 
 .footer__inner {
@@ -84,5 +83,9 @@
 	font-weight: 700;
 	align-self: center;
 	margin: 0;
+}
+.link:hover {
+	color: #f4d03f;
+	text-decoration: none;
 }
 </style>

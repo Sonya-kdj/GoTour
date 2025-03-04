@@ -49,6 +49,7 @@
 }
 
 .link:hover {
-	color: #1a5276;
+	color: #f4d03f;
+	text-decoration: none;
 }
 </style>

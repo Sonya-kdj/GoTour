@@ -1,6 +1,6 @@
 <template>
 	<section class="section section--yellow">
-		<div class="forms">
+		<div class="forms" id="form">
 			<h2 class="title">ГОТОВ К ПОЕЗДКЕ ?</h2>
 			<div class="form">
 				<form @submit.prevent="sendBooking">
@@ -25,13 +25,12 @@
 							placeholder="email"
 						/>
 					</div>
-
 					<input
 						v-model="form.phone"
 						type="tel"
 						class="form__input"
 						placeholder="номер телефона"
-						@input="validatePhone"
+						@input="formatPhone"
 					/>
 					<input
 						v-model="form.telegram"
@@ -70,13 +69,9 @@ const fetchTours = async () => {
 	}
 }
 
-const validatePhone = () => {
-	form.value.phone = form.value.phone.replace(/\D/g, '')
-}
-
 const sendBooking = async () => {
 	try {
-		const response = await fetch('http://localhost:3000/api/bookings ', {
+		const response = await fetch('http://localhost:3000/api/bookings', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(form.value),

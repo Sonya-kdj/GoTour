@@ -9,7 +9,7 @@
 					Отправься в приключение мечты с нами. Мы подбираем лучшие маршруты и
 					создаём незабываемые впечатления.
 				</p>
-				<button class="btn__hero"><a href="#">Выбрать тур</a></button>
+				<button class="btn__hero"><a href="#tour">Выбрать тур</a></button>
 			</div>
 			<img src="../assets/mainImage.jpg" alt="" />
 		</div>
@@ -45,7 +45,7 @@
 
 .btn__hero {
 	font-size: 21px;
-	margin-top: 24px;
+	margin-top: 28px;
 	border-radius: 8px;
 	background: #f4d03f;
 	padding: 12px 24px;

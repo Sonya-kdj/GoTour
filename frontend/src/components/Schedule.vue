@@ -2,7 +2,7 @@
 	<section class="Schedule">
 		<div class="text">
 			<h2 class="title">РАСПИСАНИЕ ТУРОВ</h2>
-			<p class="sub-title">Выберите, когда хотите поехать:</p>
+			<p class="sub-title" link="tour">Выберите, когда хотите поехать:</p>
 		</div>
 		<div class="tour__inner" v-if="tours.length > 0">
 			<div v-for="tour in tours" :key="tour.id" class="tours__inner">
@@ -25,7 +25,9 @@
 						<p class="tour__value tour__value--large">{{ tour.price }} ₽</p>
 					</div>
 
-					<button class="tour__button">ЗАБРОНИРОВАТЬ</button>
+					<button class="tour__button" @click="scrollToForm">
+						ЗАБРОНИРОВАТЬ
+					</button>
 				</div>
 				<div v-for="(images, index) in tour.images" :key="index">
 					<img :src="`src/assets/${images}`" :alt="tour.name" />
@@ -51,6 +53,12 @@ const fetchTours = async () => {
 	}
 }
 
+const scrollToForm = () => {
+	const formElement = document.getElementById('form')
+	if (formElement) {
+		formElement.scrollIntoView({ behavior: 'smooth' })
+	}
+}
 onMounted(fetchTours)
 </script>
 <style scoped>

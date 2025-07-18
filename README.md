@@ -5,7 +5,7 @@
 :rocket: Технологии:
 
 - Backend: Node.js, Express, TypeORM, MySQL
-- Frontend: Vue 3, Composition API, Tailwind CSS
-- Загрузка изображений: multer
+- Frontend: Vue 3, Composition API
+
 
 
